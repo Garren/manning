@@ -1,0 +1,51 @@
+{
+  "name": "time-tracker",
+  "version": "0.2.1",
+  "author": "Joachim Wendenburg <kgde@wendenburg.de>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wende60/timeTracker"
+  },
+  "main": "main.js",
+  "devDependencies": {
+    "acorn": "^6.1.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^2.1.1",
+    "electron": "^5.0.4",
+    "electron-packager": "^13.1.1",
+    "mini-css-extract-plugin": "^0.7.0",
+    "node-sass": "^5.0.0",
+    "raw-loader": "^2.0.0",
+    "sass-loader": "^7.2.0",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1"
+  },
+  "scripts": {
+    "build": "rm -rf build && webpack --config webpack.config.electron.js --mode production",
+    "web": "rm -rf build && webpack-dev-server --config webpack.config.web.js --mode development --hot --inline",
+    "//": "@TODO Linux 1024x1024.png, Win ico, Win works only with installed wine",
+    "packageMac": "electron-packager ./ TimeTracker --overwrite --platform=darwin --arch=x64 --icon=assets/timeTracker.icns --prune=true --out=bin",
+    "packageLinux": "electron-packager ./ TimeTracker --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/timeTracker.icns --prune=true --out=bin",
+    "packageWin": "electron-packager ./ --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/timeTracker.icns --prune=true --out=bin --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"TimeTracker\"",
+    "electronDebug": "npm run build && electron . debug",
+    "electron": "npm run build && electron .",
+    "bin": "npm run build && npm run packageMac"
+  },
+  "dependencies": {
+    "pouchdb-browser": "^7.1.1",
+    "pouchdb-find": "^7.1.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}

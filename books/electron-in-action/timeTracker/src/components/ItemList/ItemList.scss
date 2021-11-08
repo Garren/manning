@@ -1,0 +1,26 @@
+@import '../../styles/extensions.scss';
+
+.itemList {
+    padding: 20px 0 30px 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    li {
+        display: flex;
+        align-items: center;
+        padding: 6px;
+        border-bottom: 1px dotted #ffffff;
+        cursor: pointer;
+        div {
+            flex-basis: 50%;
+
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
+
+    .deleteButton {
+        @extend %plusMinusButton;
+    }
+}

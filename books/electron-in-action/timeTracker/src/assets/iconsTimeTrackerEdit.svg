@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242 242">
+  <title>iconsTimeTrackerEdit</title>
+  <g id="kreis">
+    <circle cx="121" cy="121" r="116" style="fill: #fff"/>
+  </g>
+  <g id="edit">
+    <path d="M216,54,113,158,76,168l10-37L189,27a116,116,0,1,0,27,27ZM106,149,210,46,199,35,95,138Z" style="fill: #0086ed"/>
+  </g>
+  <g id="kreis-2" data-name="kreis">
+    <circle cx="121" cy="121" r="116" style="fill: none;stroke: #fff;stroke-miterlimit: 10;stroke-width: 10px"/>
+  </g>
+</svg>

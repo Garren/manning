@@ -1,0 +1,43 @@
+.manageViewWrapper {
+
+    .messageHeader {
+        padding: 20px;
+        background: #f76504;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        border-radius: 5px;
+        margin: 10px 0 20px 0;
+    }
+
+    .projectBlockWrapper {
+        h3 {
+            div {
+                font-weight: lighter;
+                text-transform: uppercase;
+                display: inline;
+            }
+        }
+    }
+
+    .printButtonWrapper {
+        overflow: hidden;
+        padding: 0 0 20px 0;
+        .printButton {
+            float: right;
+            cursor: pointer;
+            padding: 5px 20px;
+            height: 36px;
+            font-size: 15px;
+            font-weight: normal;
+            color: #fff;
+            background: #f76504;
+            border: 2px solid #ffffff;
+            border-radius: 5px;
+            margin: 0 0 0 10px;
+            box-sizing: border-box;
+            text-transform: uppercase;
+            line-height: 150%;
+        }
+    }
+}
+

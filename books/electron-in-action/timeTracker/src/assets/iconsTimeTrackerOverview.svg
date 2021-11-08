@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242 242">
+  <title>iconsTimeTrackerOverview</title>
+  <g id="kreis">
+    <circle cx="121" cy="121" r="116" style="fill: #fff"/>
+  </g>
+  <g id="home">
+    <path d="M121,5A116,116,0,0,0,59,220V99l62-48,61,48V220A116,116,0,0,0,121,5Z" style="fill: #0086ed"/>
+    <path d="M142,236V167H100v69l21,2Z" style="fill: #0086ed"/>
+  </g>
+  <g id="kreis-2" data-name="kreis">
+    <circle cx="121" cy="121" r="116" style="fill: none;stroke: #fff;stroke-miterlimit: 10;stroke-width: 10px"/>
+  </g>
+</svg>

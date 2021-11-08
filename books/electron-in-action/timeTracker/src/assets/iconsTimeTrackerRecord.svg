@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242 242">
+  <title>iconsTimeTrackerRecord</title>
+  <g id="kreis">
+    <circle cx="121" cy="121" r="116" style="fill: #fff"/>
+  </g>
+  <g id="time">
+    <path d="M121,5A116,116,0,1,0,237,121H121Z" style="fill: #0086ed"/>
+  </g>
+  <g id="kreis-2" data-name="kreis">
+    <circle cx="121" cy="121" r="116" style="fill: none;stroke: #fff;stroke-miterlimit: 10;stroke-width: 10px"/>
+  </g>
+</svg>

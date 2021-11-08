@@ -1,0 +1,447 @@
+<script>
+  import ComponentStyle from "./ComponentStyle.svelte";
+  import Select from "./Select.svelte";
+  import StopLight from "./StopLight.svelte";
+  import Sum from "./Sum.svelte";
+  import BindExample from "./BindExample.svelte";
+  import Tally from "./Tally.svelte";
+  import Parent from "./Parent.svelte";
+  import ColorPicker from "./ColorPicker.svelte";
+  import SizeBindings from "./SizeBindings.svelte";
+  import ShippingLabel from "./ShippingLabel.svelte";
+  /* import sanitizeHtml from "sanitie-html"; */
+
+  import DogForm from "./DogForm.svelte";
+  import DogList from "./DogList.svelte";
+
+  import FlipDemo from "./FlipDemo.svelte";
+
+  let dog = {};
+  let mode = "list";
+
+  function changeMode(event) {
+    mode = event.detail;
+    if (mode === "create") dog = {};
+  }
+  const selectDog = (event) => (dog = event.detail);
+
+  import Point from "./point";
+  import {
+    lineStore,
+    pointStore,
+    count,
+    itemsWithTaxStore,
+    taxStore,
+  } from "./stores";
+
+  let point = new Point(1, 2);
+  function translate() {
+    const dx = 2,
+      dy = 3;
+
+    // update our local point
+    point.translate(dx, dy);
+    point = point; // trigger update. Since point is
+    // rendered on the page this communicates that a
+    // new render for it is necessary.
+
+    // update the point in our pointStore
+    pointStore.update((point) => {
+      point.translate(dx, dy);
+      return point;
+    });
+
+    // update our lineStore
+    lineStore.update((line) => {
+      line.translate(dx, dy);
+      return line;
+    });
+  }
+
+  let html = `
+    pointStore.update((point) => {
+      point.translate(dx, dy);
+      return point;
+    });`;
+
+  import MaskedInput from "./MaskedInput.svelte";
+  let phone = "";
+
+  import Dialog from "./Dialog.svelte";
+  let dialog;
+
+  import Buttons from "./Buttons.svelte";
+  let myColors = ["Red", "Green", "Blue"];
+  let myColor = "";
+  const handleColorSelect = (event) => (myColor = event.detail);
+
+  import A from "./A.svelte";
+
+  let hex = "000000";
+
+  export let name;
+  let go = false;
+
+  const options = [
+    "",
+    "Red",
+    { label: "Green" },
+    { label: "Blue", value: "b" },
+  ];
+  let selected;
+  const handleSelect = (event) => (selected = event.detail);
+
+  let size = 3;
+  $: numbers = Array(size)
+    .fill()
+    .map((_, i) => i + 1);
+
+  let tally, // our tally component reference
+    taxRate = 0,
+    grandTotal = 0;
+
+  function update() {
+    // manually update our locals given a tally component
+    taxRate = tally.taxRate;
+    grandTotal = tally.getGrandTotal();
+  }
+
+  let markup = '<h1 style="color: red">Hello!</h1>';
+
+  let baskets = [
+    {
+      name: "Basket 1",
+      items: ["Orange", "Pinapple"],
+    },
+    {
+      name: "Basket 2",
+      items: ["Banana", "Apple"],
+    },
+    {
+      name: "Basket 3",
+      items: ["Grapefruit"],
+    },
+  ];
+
+  let hoveringOverBasket;
+  function dragStart(event, basketIndex, itemIndex) {
+    const data = { basketIndex, itemIndex };
+    event.dataTransfer.setData("text/plain", JSON.stringify(data));
+  }
+  function drop(event, basketIndex) {
+    const json = event.dataTransfer.getData("text/plain");
+    const data = JSON.parse(json);
+    const [item] = baskets[data.basketIndex].items.splice(data.itemIndex, 1);
+    baskets[basketIndex].items.push(item);
+    baskets = baskets;
+    hoveringOverBasket = null;
+  }
+
+  import LifecycleDemo from "./LifecycleDemo.svelte";
+  let show = true;
+
+  import ColorCycle from "./ColorCycle.svelte";
+  let colorCycleShow = true;
+
+  import BeforeUpdateDemo from "./BeforeUpdateDemo.svelte";
+  import AfterUpdateDemo from "./AfterUpdateDemo.svelte";
+  import HelperDemo from "./HelperDemo.svelte";
+  import Pie from "./Pie.svelte";
+  import { tweened } from "svelte/motion";
+  let percent = 0;
+  const store = tweened(0, { duration: 1000 });
+  $: store.set(percent || 0);
+</script>
+
+<main>
+  <h1>Hello {name}!</h1>
+  <p>
+    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
+    how to build Svelte apps.
+  </p>
+</main>
+
+<ComponentStyle status="200" />
+<hr />
+
+<Select {options} on:select={handleSelect} />
+
+{#if selected}
+  <div>You selected {selected}.</div>
+{/if}
+<hr />
+
+<StopLight />
+<StopLight on />
+<StopLight on={go} />
+<button on:click={() => (go = !go)}>toggle</button>
+<hr />
+
+<label for="">
+  Size
+  <input type="number" bind:value={size} />
+</label>
+<Sum {numbers} />
+<hr />
+
+<BindExample />
+<hr />
+
+<p>reference a child component rather than binding to its props</p>
+<Tally bind:this={tally} />
+<button on:click={update}>Update</button>
+<div>
+  Tax Rate = {(taxRate * 100).toFixed(2)}%;
+</div>
+<div>
+  Grand Total = {grandTotal.toFixed(2)}
+</div>
+<hr />
+
+<Parent />
+<hr />
+
+<h2>Color Picker</h2>
+<p>Bind a child's prop to a parent ('hex' in this instance)</p>
+<ColorPicker bind:hex />
+<!-- bind our hex to the color picker's hex -->
+<div class="swatch" style="background-color: {hex};">
+  {hex}
+</div>
+<input type="color" bind:value={hex} />
+<hr />
+
+<h2>Size Bindings</h2>
+<p>Get width and height bindings for child components (read only)</p>
+<SizeBindings />
+
+<hr />
+<h2>Slot Example</h2>
+<p>HTML5 slots allow for parents to specify content for children</p>
+<ShippingLabel>
+  <div slot="address">
+    123 Some Street, <br />
+    Somewhere, Some State 12345
+  </div>
+  <div slot="name">Mark Volkmann</div>
+</ShippingLabel>
+<hr />
+
+<h2>Buttons</h2>
+<p>
+  Event dispatching example. Buttons component dispatches a 'select' event and
+  the parent handles it.
+</p>
+<Buttons labels={myColors} value={myColor} on:select={handleColorSelect} />
+{#if myColor}
+  <div>You clicked {myColor}.</div>
+{/if}
+
+<hr />
+
+<h2>Context example</h2>
+<p>
+  Component A sets some context, component C which is nested in B, pulls it out.
+  Unlike props and stores, context is not reactive and will only get set on
+  component initializations. Subsequent calls are ignored.
+</p>
+<A />
+<hr />
+
+<h2>Store Example</h2>
+<h3>Dogs</h3>
+{#if mode === "list"}
+  <DogList on:mode={changeMode} on:select={selectDog} />
+{:else}
+  <DogForm {dog} {mode} on:mode={changeMode} />
+{/if}
+
+<hr />
+
+<h2>Derived Store</h2>
+<p>
+  $taxStore is bound directly to the tax input below. $itemsWithTaxStore is a
+  derived store that uses $taxStore
+</p>
+<label>
+  Tax
+  <input type="number" bind:value={$taxStore} />
+</label>
+
+{#each $itemsWithTaxStore as item}
+  <div>
+    {item.name} - cost ${item.cost.toFixed(2)} - total ${item.total.toFixed(2)}
+  </div>
+{/each}
+<hr />
+
+<h2>Example of a custom store</h2>
+<p>
+  It doesn't expost set or update methods. Instead it exposes increment,
+  decrement, and reset methods. Users can only update its values using those
+  methods.
+</p>
+
+<div>count = {$count}</div>
+<button on:click={() => count.increment()}>+</button>
+<button on:click={() => count.decrement()}>-</button>
+<button on:click={() => count.reset()}>Reset</button>
+
+<hr />
+
+<h2>Example using stores with classes</h2>
+<h3>local point = ({point.x}, {point.y})</h3>
+<p>
+  updates must be performed inside the function passed to the store's update
+  method. those function s must return the updated object.
+</p>
+<pre>{html}</pre>
+<h3>point store = {$pointStore.toString()}</h3>
+<h3>line store = {$lineStore.toString()}</h3>
+<button on:click={translate}>Translate</button>
+
+<hr />
+<h2>Rendering user-entered HTML</h2>
+<textarea bind:value={markup} rows="10" />
+{@html markup}
+<hr />
+
+<h2>Masked Control using the tick() routine</h2>
+
+<label for="">
+  Phone
+  <MaskedInput mask="(999)999-9999" bind:value={phone} />
+</label>
+<div>phone = {phone}</div>
+
+<hr />
+<div on:click={() => dialog.showModal()}>Open Dialog</div>
+<Dialog title="Test Dialog" bind:dialog>
+  My dialog content is very, very, long <br />
+  It will not wrap by default.
+</Dialog>
+<hr />
+
+<h2>Drag and Drop api example</h2>
+<p>Drag a fruit from one basket to another.</p>
+{#each baskets as basket, basketIndex}
+  <b>{basket.name}</b>
+  <ul
+    class:hovering={hoveringOverBasket === basket.name}
+    on:dragenter={() => (hoveringOverBasket = basket.name)}
+    on:dragleave={() => (hoveringOverBasket = null)}
+    on:drop|preventDefault={(event) => drop(event, basketIndex)}
+    on:dragover|preventDefault
+  >
+    {#each basket.items as item, itemIndex}
+      <li
+        draggable="true"
+        on:dragstart={(event) => dragStart(event, basketIndex, itemIndex)}
+      >
+        {item}
+      </li>
+    {/each}
+  </ul>
+{/each}
+
+<hr />
+
+<h2>Lifecycle Demo</h2>
+<label>
+  <input type="checkbox" bind:checked={show} />
+  show
+</label>
+{#if show}
+  <LifecycleDemo />
+{/if}
+
+<hr />
+<h2>ColorCycle - onDestroy Demo</h2>
+<button on:click={() => (show = !show)}>Toggle</button>
+{#if show}
+  <ColorCycle text="Some title" />
+{/if}
+<hr />
+
+<h2>BeforeUpdate Demo - capture select range</h2>
+<BeforeUpdateDemo />
+<hr />
+
+<h2>AfterUpdate Demo</h2>
+<p>
+  Register a functino to be called after each component update. Typically this
+  is used to perform additional DOM updates after svelte has updated the DOM.
+</p>
+<AfterUpdateDemo />
+<hr />
+
+<h2>Helper demo</h2>
+<HelperDemo />
+<hr />
+
+<h2>Animation: Flip Demo</h2>
+<FlipDemo />
+<hr />
+
+<h2>Tween: Pie Demo</h2>
+<label for="">
+  Percent
+  <input type="number" min="0" max="100" bind:value={percent} />
+</label>
+<Pie size={200} percent={$store} />
+<hr />
+
+<style>
+  textarea {
+    width: 95vw;
+  }
+
+  .hovering {
+    border-color: orange;
+  }
+
+  li {
+    background-color: gray;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px;
+  }
+  li:hover {
+    background-color: orange;
+    color: white;
+  }
+  ul {
+    border: solid lightgray 1px;
+    height: 40px;
+    padding: 10px;
+  }
+
+  .swatch {
+    color: white;
+    display: inline-block;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    width: 100px;
+  }
+  main {
+    text-align: center;
+    padding: 1em;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: #ff3e00;
+    text-transform: uppercase;
+    font-size: 4em;
+    font-weight: 100;
+  }
+
+  @media (min-width: 640px) {
+    main {
+      max-width: none;
+    }
+  }
+</style>

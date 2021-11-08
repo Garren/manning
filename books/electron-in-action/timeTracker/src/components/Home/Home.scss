@@ -1,0 +1,78 @@
+@import '../../styles/extensions.scss';
+
+.homeWrapper {
+    min-height: 100%;
+    padding: 0 5% 0 5%;
+
+    .messageHeader {
+        padding: 20px;
+        background: #f76504;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        border-radius: 5px;
+        margin: 0 0 10px 0;
+    }
+
+    .selectionBar {
+        display: flex;
+        align-items: center;
+        & > div {
+            flex-basis: 50%;
+        }
+
+        h1 {
+            font-size: 46px;
+            font-weight: lighter;
+            padding: 20px 0 20px 0;
+            opacity: 0.5;
+        }
+    }
+
+    .timeTrackerNavi {
+        padding: 10px 0 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .button {
+                width: 50px;
+                height: 50px;
+                margin: 0 20px 0 0;
+                cursor: pointer;
+                transform: scale(1);
+                transition: transform 0.4s;
+
+                &.userButton {
+                    margin: 0;
+                }
+
+                svg {
+                    width: 100%;
+                    height: auto;
+                }
+
+                &.isActive:hover {
+                    transform: scale(1.1);
+                }
+
+                &.selected {
+                    svg {
+                        path {
+                            fill: #FFB600 !important;
+                        }
+                    }
+                }
+
+                &.inActive {
+                    opacity: 0.3;
+                }
+            }            
+        }
+    }
+}
+

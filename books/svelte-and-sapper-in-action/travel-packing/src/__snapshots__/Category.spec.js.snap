@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category should match snapshot 1`] = `
+<body>
+  <div>
+    <section
+      class="svelte-1hddurx"
+    >
+      <h3
+        class="svelte-1hddurx"
+      >
+        <span>
+          Clothes
+        </span>
+         
+        <span
+          class="status svelte-1hddurx"
+        >
+          1 of 2 remaining
+        </span>
+         
+        <button
+          class="icon svelte-1hddurx"
+        >
+          🗑
+        </button>
+      </h3>
+       
+      <form>
+        <label>
+          New Item
+      
+          <input
+            class="svelte-1hddurx"
+            data-testid="item-input"
+            required=""
+          />
+        </label>
+         
+        <button
+          class="svelte-1hddurx"
+        >
+          Add Item
+        </button>
+      </form>
+       
+      <ul
+        class="svelte-1hddurx"
+      >
+        <div
+          class="wrapper svelte-1hddurx"
+        >
+          <li
+            class="svelte-4gipra"
+          >
+            <input
+              class="svelte-4gipra"
+              type="checkbox"
+            />
+             
+            <span
+              class="packed-false svelte-4gipra"
+              draggable="true"
+            >
+              shoes
+            </span>
+             
+            <button
+              class="icon svelte-4gipra"
+              data-testid="delete"
+            >
+              🗑
+            </button>
+          </li>
+           
+        </div>
+        <div
+          class="wrapper svelte-1hddurx"
+        >
+          <li
+            class="svelte-4gipra"
+          >
+            <input
+              class="svelte-4gipra"
+              type="checkbox"
+            />
+             
+            <span
+              class="packed-true svelte-4gipra"
+              draggable="true"
+            >
+              socks
+            </span>
+             
+            <button
+              class="icon svelte-4gipra"
+              data-testid="delete"
+            >
+              🗑
+            </button>
+          </li>
+           
+        </div>
+      </ul>
+    </section>
+     
+    <dialog
+      class="dialog fixed svelte-1ypc3a2"
+      open=""
+    >
+      <header
+        class="svelte-1ypc3a2"
+      >
+         
+        <div
+          class="title svelte-1ypc3a2"
+        >
+          Category
+        </div>
+         
+        <button
+          class="close-btn svelte-1ypc3a2"
+        >
+          ✖
+        </button>
+      </header>
+       
+      <main
+        class="svelte-1ypc3a2"
+      >
+        <div>
+          
+        </div>
+      </main>
+    </dialog>
+  </div>
+</body>
+`;

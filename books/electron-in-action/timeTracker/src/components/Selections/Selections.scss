@@ -1,0 +1,34 @@
+
+.selectionsWrapper {
+    display: table;
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px 0 20px 0;
+    float: right;
+
+    p {
+        display: table-row;
+
+        span {
+            display: table-cell;
+            padding: 6px 6px 6px 6px;
+            border-bottom: 1px solid #36A8FF;
+            width: 50%;
+            box-sizing: border-box;
+            font-weight: lighter;
+            color: #ffffff;
+
+            &:first-child {
+                opacity: 0.5;
+                text-transform: uppercase;
+            }
+
+            &:last-child {
+                opacity: 1;
+            }
+        }
+        &.isActive {
+            cursor: pointer;
+        }
+    }
+}

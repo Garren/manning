@@ -1,0 +1,58 @@
+@import '../../styles/extensions.scss';
+
+.timeButtonWrapper {
+    padding: 50px 0 50px;
+
+    .timeButton {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 20px solid #f76504;
+        background: #ffb600;
+        margin: auto;
+        text-align: center;
+        box-sizing: border-box;
+        box-shadow: 10px 3px 0px rgba(0,0,0,0.2);
+        cursor: pointer;
+
+        p {
+            vertical-align: middle;
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        &:before {
+            content: 'span';
+            display: inline-block;
+            height: 100%;
+            width: 0;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+
+        &.timeButtonDown {
+            border: 26px solid #f76504;
+
+            p {
+                font-size: 26px;
+                text-transform: uppercase;
+            }
+        }
+
+        &.timeIsRunning {
+            animation-name: glowing;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+    }
+
+    @extend %moveInAnimation;
+}
+
+@keyframes glowing {
+    0%   {box-shadow: 0px 0px 70px 20px rgba(255,255,255,0.4); background: #ffb600;}
+    50% {box-shadow: 0px 0px 70px 20px rgba(255,255,255,1); background: #fff0b5;}
+    100% {box-shadow: 0px 0px 70px 20px rgba(255,255,255,0.4); background: #ffb600;}
+}

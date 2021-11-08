@@ -1,0 +1,23 @@
+
+html,
+body {
+	overflow-x: hidden;
+	font: normal normal normal 15px verdana, helvetica, arial, sans-serif;
+    background: #0090ff;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#react-root {
+	height: 100%;
+	overflow: visible;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+
