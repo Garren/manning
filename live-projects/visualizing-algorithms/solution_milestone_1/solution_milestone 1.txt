@@ -1,0 +1,1 @@
+You have now created a simple data structure, an integer array, in memory, filled this data structure with randomly generated integer values, and then visualized this data on the Processing canvas. This visualization of the randomly generated, unsorted data is a basis for the next milestone: sorting the data.
