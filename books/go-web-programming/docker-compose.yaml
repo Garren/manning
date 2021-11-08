@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  chitchat_db:
+    image: postgres:10.6
+    env_file:
+      - database.env
+    ports:
+      - '0.0.0.0:5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+
+volumes:
+  db_data:

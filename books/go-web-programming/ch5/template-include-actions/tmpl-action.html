@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Go Web Programming</title>
+  </head>
+  <body>
+    <div>The dot is {{ . }}</div>
+    <div>
+      {{ with "world" }}
+        Now the dot is set to {{ . }}
+      {{ end }}
+    </div>
+    <div>The dot is {{ . }} again</div>
+  </body>
+</html>

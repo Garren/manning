@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Go Web Programming</title>
+  </head>
+  <body>
+    <div> This is the t1.html before</div>
+    <div> this is the value of the do in t1.html [{{ . }}]</div>
+    <hr/>
+    {{ template "t2.html" . }}
+    <div> This is the t1.html after</div>
+  </body>
+</html>

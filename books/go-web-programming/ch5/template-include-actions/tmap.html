@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Go Web Programming</title>
+  </head>
+  <body>
+    {{ range $key, $value := . }}
+      The key is {{ $key }} and the value is {{ $value }}
+    {{ end }}
+  </body>
+</html>
