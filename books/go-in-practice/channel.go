@@ -1,0 +1,26 @@
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func printCount(c chan int) {
+	num := 0
+	for num >= 0 {
+		num = <-c
+		fmt.Println(num, " [printCount]")
+	}
+}
+
+func main() {
+	c := make(chan int)
+	a := []int{8, 6, 7, 5, 3, 0, 9, -1}
+	go printCount(c)
+	for _, v := range a {
+		fmt.Println(v, " [main]")
+		c <- v
+	}
+	time.Sleep(time.Millisecond * 1)
+	fmt.Println("End of main")
+}
